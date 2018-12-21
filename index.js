@@ -26,10 +26,11 @@ mf.event.Link = class extends Click {
     contents (tgt_dom) {
         try {
             super.contents(tgt_dom);
+            let link = this;
             this.handler(
                 (cmp,clk) => {
                     try {
-                        let url = clk.url();
+                        let url = link.url();
                         if (true === url[1]) {
                             window.open(url[0], '_blank');
                         } else {
