@@ -1,0 +1,7 @@
+<require>
+    <tag load="mofron-comp-image">Image</tag>
+    <tag load="mofron-event-link">Link</tag>
+</require>
+
+<Image event=Link("https://mofron.github.io/mofron/",ture)>./logo.png</Image>
+

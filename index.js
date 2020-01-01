@@ -1,40 +1,54 @@
 /**
  * @file mofron-event-link/index.js
- * @author simpart
+ * @brief enable link to target component
+ * @license MIT
  */
-const mf    = require('mofron');
 const Click = require('mofron-event-click');
 
-/**
- * @class mofron.event.Link
- * @brief Link event class for component
- */
-mf.event.Link = class extends Click {
-    
-    constructor (po) {
+module.exports = class extends Click {
+    /**
+     * initialize event
+     * 
+     * @param (mixed) url parameter
+     *                key-value: event config
+     * @short url,newtab
+     * @type private
+     */
+    constructor (p1,p2) {
         try {
             super();
-            this.name('Link');
-            this.prmMap('url');
-            this.prmOpt(po);
+            this.name("Link");
+            this.shortForm("url", "newtab");
+            
+            this.confmng().add("url", { type: "string", init: "./" });
+            this.confmng().add("newtab", { type: "boolean", init: false });
+            
+	    if (0 < arguments.length) {
+                this.config(p1,p2);
+	    }
         } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
     
+    /**
+     * event contents
+     * set url jump event to click handler
+     * 
+     * @type private
+     */
     contents (tgt_dom) {
         try {
             super.contents(tgt_dom);
             let link = this;
             this.handler(
-                (cmp,clk) => {
+                () => {
                     try {
-                        let url = link.url();
-                        if (true === url[1]) {
-                            window.open(url[0], '_blank');
+                        if (true === link.newtab()) {
+                            window.open(link.url(), '_blank');
                         } else {
-                            window.location.href = url[0];
+                            window.location.href = link.url();
                         }
                     } catch (e) {
                         console.error(e.stack);
@@ -49,28 +63,35 @@ mf.event.Link = class extends Click {
         }
     }
     
-    url (prm, flg) {
+    /**
+     * jump url
+     *
+     * @param (string) jump url (default is './')
+     * @type parameter
+     */
+    url (prm) {
         try {
-            if (undefined === prm) {
-                /* getter */
-                return (undefined === this.m_url) ? ['', true] : this.m_url;
-            }
-            /* setter */
-            if ('string' !== typeof prm) {
-                throw new Error('invalid parameter');
-            }
-            if (undefined === flg) {
-                flg = false;
-            }
-            if ('boolean' !== typeof flg) {
-                throw new Error('invalid parameter');
-            }
-            this.m_url = [prm, flg];
+	    return this.confmng("url", prm);
         } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
+    
+    /**
+     * newtab flag
+     * 
+     * @param (boolean) true: jump to url by newtab
+     *                  false: jump to url by current tab (default)
+     * @type parameter
+     */
+    newtab (prm) {
+        try {
+            return this.confmng("newtab",prm);
+	} catch (e) {
+            console.error(e.stack);
+            throw e;
+	}
+    }
 }
-module.exports = mf.event.Link;
 /* end of file */
