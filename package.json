@@ -1,6 +1,6 @@
 {
   "name": "mofron-event-link",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "link event for mofron",
   "main": "index.js",
   "scripts": {

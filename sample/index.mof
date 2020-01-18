@@ -3,5 +3,5 @@
     <tag load="mofron-event-link">Link</tag>
 </require>
 
-<Image event=Link("https://mofron.github.io/mofron/",ture)>./logo.png</Image>
+<Image event=Link:("https://mofron.github.io/mofron/",true)>./logo.png</Image>
 

@@ -3,6 +3,14 @@
 
 enable link to target component
 
+## event function parameter
+
+- component: event target component object
+
+- event: "click" event object by addEventListener
+
+- mixed: user specified parameter
+
 
 # Install
 ```
@@ -16,7 +24,7 @@ npm install mofron mofron-event-link
     <tag load="mofron-event-link">Link</tag>
 </require>
 
-<Image event=Link("https://mofron.github.io/mofron/",ture)>./logo.png</Image>
+<Image event=Link:("https://mofron.github.io/mofron/",true)>./logo.png</Image>
 
 ```
 
@@ -25,6 +33,6 @@ npm install mofron mofron-event-link
 | Short<br>Form | Parameter Name | Type | Description |
 |:-------------:|:---------------|:-----|:------------|
 | ◯  | url | string | jump url (default is './') |
-| ◯  | newtab | boolean | true: jump to url by newtab |
-| | | | false: jump to url by current tab (default) |
+| ◯  | newtab | boolean | true: jump to url by newtab (default) |
+| | | | false: jump to url by current tab |
 
