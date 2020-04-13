@@ -13,12 +13,13 @@ module.exports = class extends Click {
     /**
      * initialize event
      * 
-     * @param (mixed) short-form parameter
+     * @param (mixed) url parameter
      *                key-value: event config
+     * @param (boolean) newtab parameter
      * @short url,newtab
      * @type private
      */
-    constructor (prm) {
+    constructor (p1, p2) {
         try {
             super();
             this.name("Link");
@@ -27,8 +28,8 @@ module.exports = class extends Click {
             this.confmng().add("url", { type: "string", init: "./" });
             this.confmng().add("newtab", { type: "boolean", init: false });
             
-	    if (undefined !== prm) {
-                this.config(prm);
+	    if (0 < arguments.length) {
+                this.config(p1, p2);
 	    }
         } catch (e) {
             console.error(e.stack);
