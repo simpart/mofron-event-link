@@ -1,6 +1,6 @@
 {
   "name": "mofron-event-link",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "link event for mofron",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,9 @@
   "keywords": [
     "front-end", "mofron"
   ],
+  "dependencies": {
+    "mofron-event-click" : ""
+  },
   "author": "simparts",
   "license": "MIT",
   "bugs": {
