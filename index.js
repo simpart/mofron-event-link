@@ -22,7 +22,7 @@ module.exports = class extends Click {
     constructor (p1, p2) {
         try {
             super();
-            this.name("Link");
+            this.modname("Link");
             this.shortForm("url", "newtab");
             
             this.confmng().add("url", { type: "string", init: "./" });

@@ -19,10 +19,10 @@ npm install mofron mofron-event-link
 
 # Sample
 ```html
-<require>
+<setting>
     <tag load="mofron-comp-image">Image</tag>
     <tag load="mofron-event-link">Link</tag>
-</require>
+</setting>
 
 <Image event=Link:("https://mofron.github.io/mofron/",true)>./logo.png</Image>
 
